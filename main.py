@@ -5,7 +5,7 @@ import os
 load_dotenv()
 
 client = EasyEquitiesClient()
-client.login(username=str(os.environ.get("EASY_USERNAME")), password=str(os.environ.get("USER_PASSWORD")))
+client.login(username=str(os.environ.get("EASY_USERNAME")), password=str(os.environ.get("EASY_PASSWORD")))
 
 accounts = client.accounts.list()
 print(accounts)
