@@ -1,6 +1,7 @@
 from flask import Flask, render_template
 from datetime import date
-
+import os
+from easytracker.easytracker import EasyTracker
 
 app = Flask(__name__)
 
@@ -10,7 +11,10 @@ def inject_year():
 
 @app.route('/')
 def home():
-    return render_template("index.html")\
+    tracker = EasyTracker()
+    client = tracker.login(str(os.environ.get("EASY_USERNAME")), str(os.environ.get("EASY_PASSWORD")))
+    accounts = tracker.get_accounts(client)
+    return render_template("index.html", accounts=accounts)
 
 @app.route('/about')
 def about():
