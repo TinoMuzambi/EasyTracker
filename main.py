@@ -21,6 +21,15 @@ class EasyTracker:
         return accounts
 
     @staticmethod
+    def clean_accounts(accounts):
+        accounts_empty_removed = []
+        for account in accounts:
+            if account.name.find("Demo") == -1 and account.name.find("USD") == -1 and account.name.find(
+                    "AUD") == -1 and account.name.find("Properties") == -1:
+                accounts_empty_removed.append(account)
+        return accounts_empty_removed
+
+    @staticmethod
     def print_accounts(accounts):
         print("--------MY ACCOUNTS---------")
         for account in accounts:
