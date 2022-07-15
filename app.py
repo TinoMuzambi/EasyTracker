@@ -14,6 +14,7 @@ def home():
     tracker = EasyTracker()
     client = tracker.login(str(os.environ.get("EASY_USERNAME")), str(os.environ.get("EASY_PASSWORD")))
     accounts = tracker.get_accounts(client)
+    print(accounts)
     return render_template("index.html", accounts=accounts)
 
 @app.route('/about')
@@ -22,4 +23,4 @@ def about():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0', port="4000")
